@@ -1,4 +1,4 @@
-/* MooTools: the javascript framework. license: MIT-style license. copyright: Copyright (c) 2006-2015 [Valerio Proietti](http://mad4milk.net/).*/ 
+/* MooTools: the javascript framework. license: MIT-style license. copyright: Copyright (c) 2006-2015 [Valerio Proietti](http://mad4milk.net/).*/
 /*
 Web Build: http://mootools.net/more/builder/444dd8f9b276db91102332672b694443
 */
@@ -165,7 +165,7 @@ var Type = this.Type = function(name, object){
 			object.prototype.$family = (function(){
 				return lower;
 			}).hide();
-			
+
 		}
 	}
 
@@ -1157,7 +1157,7 @@ this.Events = new Class({
 	addEvent: function(type, fn, internal){
 		type = removeOn(type);
 
-		
+
 
 		this.$events[type] = (this.$events[type] || []).include(fn);
 		if (internal) fn.internal = true;
@@ -2791,7 +2791,7 @@ Document.implement({
 	newElement: function(tag, props){
 		if (props){
 			if (props.checked != null) props.defaultChecked = props.checked;
-			if ((props.type == 'checkbox' || props.type == 'radio') && props.value == null) props.value = 'on'; 
+			if ((props.type == 'checkbox' || props.type == 'radio') && props.value == null) props.value = 'on';
 			/*<ltIE9>*/ // IE needs the type to be set before changing content of style element
 			if (!canChangeStyleHTML && tag == 'style'){
 				var styleElement = document.createElement('style');
@@ -4507,7 +4507,7 @@ Element.implement({
 		// This svg section under, calling `svgCalculateSize()`, can be removed when FF fixed the svg size bug.
 		// Bug info: https://bugzilla.mozilla.org/show_bug.cgi?id=530985
 		if (this.get('tag') == 'svg') return svgCalculateSize(this);
-		
+
 		var bounds = this.getBoundingClientRect();
 		return {x: bounds.width, y: bounds.height};
 	},
@@ -5825,8 +5825,8 @@ JSON.secure = true;
 
 JSON.decode = function(string, secure){
 	if (!string || typeOf(string) != 'string') return null;
-    
-	if (secure == null) secure = JSON.secure; 
+
+	if (secure == null) secure = JSON.secure;
 	if (secure){
 		if (JSON.parse) return JSON.parse(string);
 		if (!JSON.validate(string)) throw new Error('JSON could not decode the input; security is enabled and the value is not secure.');
@@ -6649,7 +6649,7 @@ var Drag = new Class({
 
 		this.render(options);
 		this.fireEvent('drag', [this.element, event]);
-	},  
+	},
 
 	render: function(options){
 		for (var z in options.modifiers){
@@ -6776,7 +6776,7 @@ Drag.Move = new Class({
 		this.addEvent('start', this.checkDroppables, true);
 		this.overed = null;
 	},
-	
+
 	setContainer: function(container) {
 		this.container = document.id(container);
 		if (this.container && typeOf(this.container) != 'element'){
@@ -7033,7 +7033,7 @@ Element.implement({
 	},
 
 	getComputedSize: function(options){
-		
+
 
 		options = Object.merge({
 			styles: ['padding','border'],
@@ -7254,7 +7254,7 @@ var Slider = new Class({
 		if (range) this.set(Array.pick([pos, this.step]).limit(this.min,this.max), silently);
 		return this;
 	},
-    
+
 	setModulus: function(){
 		var decimals = ((this.stepSize + '').split('.')[1] || []).length,
 			modulus = 1 + '';
@@ -7426,7 +7426,7 @@ var Sortables = new Class({
 			return list;
 		}, this));
 	},
-    
+
 	getDroppableCoordinates: function (element){
 		var offsetParent = element.getOffsetParent();
 		var position = element.getPosition(offsetParent);
@@ -7499,7 +7499,7 @@ var Sortables = new Class({
 		this.clone = this.getClone(event, element);
 
 		this.drag = new Drag.Move(this.clone, Object.merge({
-			
+
 			droppables: this.getDroppables()
 		}, this.options.dragOptions)).addEvents({
 			onSnap: function(){
@@ -7544,7 +7544,7 @@ var Sortables = new Class({
 			this.clone.destroy();
 			self.reset();
 		}
-		
+
 	},
 
 	reset: function(){
@@ -9773,7 +9773,7 @@ var Locale = this.Locale = {
 
 		if (set) locale.define(set, key, value);
 
-		
+
 
 		if (!current) current = locale;
 
@@ -9788,7 +9788,7 @@ var Locale = this.Locale = {
 
 			this.fireEvent('change', locale);
 
-			
+
 		}
 
 		return this;
@@ -10365,7 +10365,7 @@ Date.extend({
 		return this;
 	},
 
-	
+
 
 	defineParser: function(pattern){
 		parsePatterns.push((pattern.re && pattern.handler) ? pattern : build(pattern));
@@ -14550,7 +14550,7 @@ Locale.define('af-ZA', 'Date', {
 	AM: 'VM',
 	PM: 'NM',
 	firstDayOfWeek: 1,
-   
+
 	// Date.Extras
 	ordinal: function(dayOfMonth){
 		return ((dayOfMonth > 1 && dayOfMonth < 20 && dayOfMonth != 8) || (dayOfMonth > 100 && dayOfMonth.toString().substr(-2, 1) == '1')) ? 'de' : 'ste';
@@ -20370,7 +20370,7 @@ var Table = this.Table = function(){
 	this.length = 0;
 	var keys = [],
 	    values = [];
-	
+
 	this.set = function(key, value){
 		var index = keys.indexOf(key);
 		if (index == -1){
@@ -20402,7 +20402,7 @@ var Table = this.Table = function(){
 	this.each = this.forEach = function(fn, bind){
 		for (var i = 0, l = this.length; i < l; i++) fn.call(bind, keys[i], values[i], this);
 	};
-	
+
 };
 
 if (this.Type) new Type('Table', Table);
