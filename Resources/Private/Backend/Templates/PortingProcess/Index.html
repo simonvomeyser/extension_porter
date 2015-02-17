@@ -1,0 +1,82 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="header">
+</f:section>
+<f:section name="iconButtons">
+</f:section>
+<f:section name="breadcrumbs">
+</f:section>
+<f:section name="content">
+<h1>Choose Extension</h1>
+<div class="extPorterHeaderInstruction">
+	Choose the old Extension you want to port into the Extbase-Framework.
+</div>
+<table class="extPorterSelectTable">
+	<tr>
+		<th>#</th>
+		<th>Extension-Name</th>
+		<th>Extension-Key</th>
+		<th>State</th>
+		<th>Category</th>
+		<th>Action</th>
+	</tr>
+	<f:for each="{portableExtensions}" as="portableExtension" iteration="portableExtensionsIteration">
+		<tr>
+			<td>{portableExtensionsIteration.cycle}</td>
+			<td>
+
+			<f:if condition="{portableExtension.pathToExtIcon}">
+				<f:image src="{portableExtension.pathToExtIcon}"/>
+			</f:if>	{portableExtension.emconf.title}
+
+			</td>
+			<td>{portableExtension.folderName}</td>
+			<td>{portableExtension.emconf.state}</td>
+			<td>{portableExtension.emconf.category}</td>
+			<td>
+			<f:link.action action="updateIndex" arguments="{folderName: portableExtension.folderName}" onclick="return (confirm('Start porting of extension {portableExtension.emconf.title}?'))">
+			<f:Be.buttons.icon icon="actions-view-go-forward" title="Start porting"></f:Be.buttons.icon>
+			</f:link.action>
+			</td>
+		</tr>
+	</f:for>
+	<f:if condition="{portableExtensions -> f:count()} == 0">
+	    <tr>
+	    	<td>-</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    </tr>
+	</f:if>
+</table>
+<f:if condition="{portingProcesses}">
+<h2>Already started processes</h2>
+<table class="extPorterSelectTable">
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>New Extension title</th>
+		<th>Working in folder</th>
+		<th>Porting progress</th>
+		<th>Action</th>
+	</tr>
+	<f:for each="{portingProcesses}" as="portingProcess" iteration="portingProcessesIteration">
+		<tr>
+			<td>{portingProcessesIteration.cycle}</td>
+			<td>Porting of &quot;{portingProcess.oldExtension.title}&quot;</td>
+			<td><f:if condition="{portingProcess.newExtension.title}"><f:then><b>{portingProcess.newExtension.title}</b></f:then><f:else>-Not yet set-</f:else></f:if></td>
+			<td><f:if condition="{portingProcess.newExtension.extFolder}"><f:then>/{portingProcess.newExtension.extFolder}</f:then><f:else>-Not yet created-</f:else></f:if></td>
+			<td><vh:percentage percent="{portingProcess.percent}"/></td>
+			<td>
+				<f:link.action action="delete" arguments="{portingProcess: portingProcess}" onclick="return (confirm('Delete Porting process from {portingProcess.oldExtension.title}? All created Files will be deleted.'))"><f:Be.buttons.icon icon="actions-edit-delete" title="Delete"></f:Be.buttons.icon></f:link.action>
+				<f:link.action action="details" arguments="{portingProcess: portingProcess}" ><f:Be.buttons.icon icon="actions-document-view" title="Details"></f:Be.buttons.icon></f:link.action>
+				<f:link.action action="continue" arguments="{portingProcess: portingProcess}" onclick="return (confirm('Continue porting of extension {portingProcess.oldExtension.title}?'))"><f:Be.buttons.icon icon="actions-view-go-forward" title="Continue porting"></f:Be.buttons.icon></f:link.action>
+			</td>
+		</tr>
+	</f:for>
+</table>
+</f:if>
+</f:section>

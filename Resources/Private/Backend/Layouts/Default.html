@@ -1,0 +1,61 @@
+<f:comment>
+	Use the section "header" to call ViewHelpers which modify the configuration
+	of the PageRenderer, f.e. to include custom CSS or JavaScript.
+</f:comment>
+<f:render section="header" />
+<f:be.container
+includeCssFiles="{
+	0: '{f:uri.resource(path:\'Styles/ExtensionPorter.css\')}',
+	1: '{f:uri.resource(path:\'Libraries/jquery-ui-1.11.2.custom/jquery-ui.min.css\')}'
+}"
+includeJsFiles="{
+	0: '{f:uri.resource(path:\'Scripts/ExtensionPorter.js\')}'
+}"
+>
+<style type="text/css">
+	span.logo {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-weight: bold;
+		color: #585858;
+		position: relative;
+		bottom: 2px;
+	}
+	</style>
+<div class="typo3-fullDoc">
+	<div id="typo3-docheader">
+		<div class="typo3-docheader-functions">
+			<div class="left">
+				<f:be.buttons.csh />
+				<f:be.menus.actionMenu>
+					<f:be.menus.actionMenuItem label="Extension Porter" controller="PortingProcess" action="index"/>
+					<f:be.menus.actionMenuItem label="Introduction" controller="PortingProcess" action="introduction" />
+				</f:be.menus.actionMenu>
+			</div>
+			<div class="right">
+				<span class="logo">Extension Builder</span>
+			</div>
+		</div>
+		<div class="typo3-docheader-buttons">
+			<div class="left">
+				<f:render section="iconButtons" />
+			</div>
+			<div class="right">
+			</div>
+		</div>
+	</div>
+	<div id="typo3-docbody">
+		<div id="typo3-inner-docbody">
+			<f:render section="breadcrumbs"/>
+			<f:flashMessages renderMode="div" />
+			<f:render section="content" />
+		</div>
+	</div>
+</div>
+<f:comment>
+
+<!-- <script tpye="text/javascript" src="{f:uri.resource(path:'Libraries/MooTools-Core-1.5.1.js')}"></script> -->
+<!-- <script tpye="text/javascript" src="{f:uri.resource(path:'Libraries/MooTools-More-1.5.1-compressed.js')}"></script> -->
+<!-- <script tpye="text/javascript" src="{f:uri.resource(path:'Libraries/jquery-ui-1.11.2.custom/jquery-ui.min.js')}"></script> -->
+</f:comment>
+</f:be.container>

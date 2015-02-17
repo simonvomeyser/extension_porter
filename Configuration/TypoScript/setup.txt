@@ -1,0 +1,26 @@
+
+ # Module configuration
+module.tx_extensionporter {
+	persistence {
+		storagePid = {$module.tx_extensionporter.persistence.storagePid}
+		classes {
+			Simon\ExtensionPorter\Domain\Model\Extension\NewExtension {
+				mapping {
+					tableName = tx_extensionporter_domain_model_extension
+					recordType = Simon\ExtensionPorter\Domain\Model\Extension\NewExtension
+				}
+			}
+			Simon\ExtensionPorter\Domain\Model\Extension\OldExtension {
+				mapping {
+					tableName = tx_extensionporter_domain_model_extension
+					recordType = Simon\ExtensionPorter\Domain\Model\Extension\OldExtension
+				}
+			}
+		}
+	}
+	view {
+		templateRootPath = {$module.tx_extensionporter.view.templateRootPath}
+		partialRootPath = {$module.tx_extensionporter.view.partialRootPath}
+		layoutRootPath = {$module.tx_extensionporter.view.layoutRootPath}
+	}
+}

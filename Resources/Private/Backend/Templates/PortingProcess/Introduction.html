@@ -1,0 +1,23 @@
+<f:layout name="Default" />
+
+<f:section name="header">
+</f:section>
+<f:section name="iconButtons">
+</f:section>
+<f:section name="breadcrumbs">
+</f:section>
+<f:section name="content">
+<h1>Introduction to the ExtensionPorter</h1>
+This is an short Introduction to this backend module.
+The idea is to assist an extenion-developer in developing a new Extbase-Extension on the base of an old pibase-Extension.
+The old files are analyzed an the initial files for the new Extbase-Extension are created.<br/>
+<div class="extPorterHintDiv">This Extension is part of a Bachelor-Thesis, implemented as a &quot;Proof of Concept&quot; and therefore still in development.</div>
+<h2>The following things should be done before you can use this Module</h2>
+<ul>
+	<li>Upload your old Extension in the /typo3conf/ext/ Folder of your installation</li>
+	<li>Your old Extension must not have any dependencys from Extbase, Fluid or TYPO3 in higher Versions than 6. These Extensions are ignored</li>
+	<li>Do not remove your uploaded Extension while the portingProcess is running.</li>
+</ul>
+
+<f:link.action action="index" controller="PortingProcess">Choose an Extension</f:link.action>
+</f:section>

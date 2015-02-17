@@ -1,0 +1,14 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<h2>Progress log</h2>
+<div class="extPorterProgresslogFakeIframe">
+    <f:for each="{progresslogs}" as="progresslog" iteration="progresslogInteration">
+    <div class="extPorterProgresslogLine">
+    	<div class="extPorterProgresslogLeft">
+    		[<f:format.date format="d.m.Y - H:i:s">{progresslog.crdate}</f:format.date>] :
+    	</div>
+    	<div class="extPorterProgresslogRight">
+    		<f:if condition="{progresslog.title}"><b>{progresslog.title} | </b></f:if>{progresslog.description -> f:format.raw()}
+    	</div>
+    </div>
+    </f:for>
+</div>

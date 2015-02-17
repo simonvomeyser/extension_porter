@@ -1,0 +1,63 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="header">
+</f:section>
+<f:section name="iconButtons">
+</f:section>
+<f:section name="breadcrumbs">
+	<f:render partial="PortingProcess/Breadcrumbs" arguments="{activ: '0'}" />
+</f:section>
+<f:section name="content">
+<h1>Porting of Extension &quot;{portingProcess.oldExtension.title}&quot;</h1>
+<h2>Configuration of general data</h2>
+<div class="extPorterHeaderInstruction">
+Please choose an new extension key or use the suggested one. After this point the follwing inital files of an Extbase-Extension are created.<br/>
+<ul>
+	<li><b>Folder structure:</b> Basic folder structure of an Extbase-Extension.</li>
+	<li><b>ext_emconf.php:</b> Is created from parsed old Extension ext_emconf.</li>
+	<li><b>ext_icon.gif:</b> Extensionicon, copyed if existing.</li>
+</div>
+<f:form action="updateGeneralData" name="newExtension" object="{portingProcess.newExtension}">
+<f:form.hidden property="additionalEmconf" value="{portingProcess.oldExtension.additionalEmconf}" />
+		<div id="extPorterBodyWrapper">
+			<div id="extPorterBody">
+				<table class="extPorterFormTable">
+					<tr>
+						<td>New extension-title:</td>
+						<td><f:form.textfield property="title" value="Extbase version:  {portingProcess.oldExtension.title}" required="required"/></td>
+					</tr>
+					<tr>
+						<td>New extension-key: <vh:icon text="Must be unique, only lowercase, no special chars!"/></td>
+						<td><f:form.textfield property="extKey" value="extbase_{portingProcess.oldExtension.extKey}" required="required"/></td>
+					</tr>
+					<tr>
+						<td>Description:</td>
+						<td><f:form.textarea cols="30" rows="5" property="description" value="{portingProcess.oldExtension.description}" /></td>
+					</tr>
+					<tr>
+						<td>Category:</td>
+						<f:form.hidden property="category" value="{portingProcess.oldExtension.category}" />
+						<td>{portingProcess.oldExtension.category}</td>
+					</tr>
+					<tr>
+						<td>State:</td>
+						<f:form.hidden property="state" value="{portingProcess.oldExtension.state}" />
+						<td>{portingProcess.oldExtension.state}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="extPorterSubmitWrapper">
+				<f:form.submit class="extPorterSubmit" name="startPorting" value="Continue and create initial Files" />
+			</div>
+		</div>
+
+</f:form>
+<div class="contentAndInfoSeperator" />Info</div>
+<h2>Dir Viewer</h2>
+<f:render partial="DirViewer/Wrapper" arguments="{heading: 'Old Extension folder', folderName: portingProcess.oldExtension.extFolder, extFolderTreeArray: extFolderTreeArray}" />
+<f:render partial="Progresslog/Index" arguments="{progresslogs: portingProcess.progresslogs}" />
+<div id="extPorterBack">
+	<f:link.action action="index" ><f:Be.buttons.icon icon="actions-view-go-back" title="Back"></f:Be.buttons.icon>Back to Index</f:link.action>
+</div>
+</f:section>

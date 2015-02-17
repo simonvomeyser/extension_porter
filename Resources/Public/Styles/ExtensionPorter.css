@@ -1,0 +1,267 @@
+
+/* -------------------------------------------------------------------------------- */
+/*	extPorterProgresslog
+/* -------------------------------------------------------------------------------- */
+.extPorterProgresslogFakeIframe {
+	border: 1px solid #d7d7d7;
+	height:150px;
+	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+.extPorterProgresslogLine {
+	position: relative;
+
+}
+
+.extPorterProgresslogLeft {
+	top:0px;
+	left:0px;
+	position: absolute;
+}
+
+.extPorterProgresslogRight {
+	padding-left: 170px;
+}
+
+
+
+/* -------------------------------------------------------------------------------- */
+/*	Table
+/* -------------------------------------------------------------------------------- */
+
+table.extPorterSelectTable {
+	margin-top: 15px;
+	width: 100%;
+	border: 1px solid #d7d7d7;
+	text-align: left;
+}
+
+table.extPorterSelectTable th {
+ 	padding: 6px;
+ 	background-color: #666;
+	color: #FFFFFF;
+}
+
+table.extPorterSelectTable tr:hover {
+ 	background-color: #d7d7d7;
+}
+
+table.extPorterSelectTable td {
+ 	padding: 6px;
+}
+
+/* -------------------------------------------------------------------------------- */
+/*	Forms
+/* -------------------------------------------------------------------------------- */
+
+
+.extPorterSubmitWrapper {
+	text-align: right;
+	width: 100%
+}
+
+.extPorterSubmit {
+	margin-top: 15px;
+	background-image: url("../Images/Buttons/1423463481_basics-17-20.png") !important;
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+}
+
+table.extPorterFormTable {
+	text-align: left;
+}
+
+table.extPorterFormTable td {
+ 	padding: 6px;
+}
+
+.extPorterFormTable input, textarea{
+	width: 100%;
+	padding: 0px;
+}
+
+/* -------------------------------------------------------------------------------- */
+/*	Various
+/* -------------------------------------------------------------------------------- */
+
+
+
+.extPorterHeaderInstruction {
+	border-left:  3px solid #d7d7d7;
+	padding-left: 5px;
+}
+
+#extPorterBodyWrapper {
+	text-align: center;
+	display: inline-block;
+}
+
+#extPorterBody {
+	margin-top: 15px;
+	padding: 15px;
+	min-width: 250px;
+	border: 1px solid #d7d7d7;
+}
+
+#extPorterBack {
+	border-top: 1px dotted;
+	margin-top: 30px;
+}
+
+.extPorterHintDiv {
+	background-image: url("../Images/Hint/ArrowRight.png");
+	background-repeat: no-repeat;
+	padding-left: 25px;
+	padding-top: 3px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.extPorterToggleImageWrapper {
+	position:relative;
+}
+
+.extPorterToggleImage {
+	cursor: pointer;
+	position:absolute;
+	right:5px;
+	top:0px
+}
+
+.contentAndInfoSeperator {
+	margin-top: 100px;
+	width: 100%;
+	height: 20px;
+
+	border-bottom: 1px dotted;
+}
+
+/* -------------------------------------------------------------------------------- */
+/*	DirViewer
+/* -------------------------------------------------------------------------------- */
+
+.dirViewerWrapper {
+	background-color: #F2F2F2;
+	/*margin-left: 40px;*/
+	border: 1px dotted #7c7c7c;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 5px;
+	padding-top: 5px;
+	margin-bottom: 5px;
+}
+
+.dirViewerHeading {
+	font-size: 1.5em;
+	font-family: Share,Verdana,Arial,Helvetica,sans-serif;
+	font-variant: normal;
+	font-weight: normal;
+}
+
+.dirViewerBody {
+	margin-top: 10px;
+	/*display: none;*/
+}
+
+/* -------------------------------------------------------------------------------- */
+/*	Tooltips
+/* -------------------------------------------------------------------------------- */
+.extPorterTooltips {
+  position: relative;
+  display: inline;
+}
+.extPorterTooltips span {
+  position: absolute;
+  width: 300px;
+  color: #FFFFFF;
+  background: #9E9E9E;
+  /*height: 33px;*/
+  line-height: 33px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+}
+.extPorterTooltips span:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin-left: -8px;
+  width: 0; height: 0;
+  border-top: 8px solid #9E9E9E;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+.extPorterTooltips:hover span {
+  visibility: visible;
+  opacity: 1;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -76px;
+  z-index: 999;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/*	FileDisplay
+/* -------------------------------------------------------------------------------- */
+
+.extPorterFileDisplayWrapper {
+	margin-top: 20px;
+	background-repeat: none;
+	background-size: contain;
+	background-image: url("../Images/Other/blankfile");
+	padding: 5px;
+	width: 145px;
+	height: 190px;
+	text-align: center;
+	float:left;
+}
+
+.extPorterFileDisplayHeading {
+	text-align: left;
+	padding: 5px;
+}
+
+.extPorterFileDisplayBody {
+	padding-top: 30px;
+	font-weight: bold;
+}
+
+.extPorterFileDisplayFooter {
+	padding-top: 25px;
+}
+.extPorterFileDisplayFooter input[type=checkbox] {
+	margin-left: 5px;
+	margin-right: 0px;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/*	Breadcrumbs
+/* -------------------------------------------------------------------------------- */
+
+#extPorterBreadcrumbs {
+	border: solid 1px #DADADA;
+	margin-bottom: 15px;
+}
+
+.extPorterBreadcrumb {
+	float: left;
+	color: #C1C1C1;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+}
+
+.extPorterBreadcrumbActiv {
+	color: #000000;
+}
+
+.extPorterBreadcrumbArrow {
+	float: left;
+	padding-top: 1px;
+}

@@ -1,0 +1,43 @@
+<div class="dirViewerWrapper">
+	<div class="extPorterToggleImageWrapper" >
+	<f:if condition="{open}">
+	    <f:then>
+			<f:image
+				class="extPorterToggleImage"
+				id="dirViewerBodyToggleImage{folderName}"
+				src="EXT:extension_porter/Resources/Public/Images/Dropdown/1423427166_arrow-down-01-16.png"
+		    	alt="Ausblenden"
+		    	title="Ausblenden"
+				onclick="toogleVisibilty(
+					'dirViewerBody{folderName}',
+					'dirViewerBodyToggleImage{folderName}',
+					'1423427115_arrow-left-01-16.png',
+					'1423427166_arrow-down-01-16.png'
+				);"
+			/>
+	    </f:then>
+	    <f:else>
+		    <f:image
+		    	class="extPorterToggleImage"
+		    	id="dirViewerBodyToggleImage{folderName}"
+		    	src="EXT:extension_porter/Resources/Public/Images/Dropdown/1423427115_arrow-left-01-16.png"
+				alt="Anzeigen"
+				title="Anzeigen"
+		    	onclick="toogleVisibilty(
+		    		'dirViewerBody{folderName}',
+		    		'dirViewerBodyToggleImage{folderName}',
+		    		'1423427115_arrow-left-01-16.png',
+		    		'1423427166_arrow-down-01-16.png'
+		    	);"
+		    />
+	    </f:else>
+	</f:if>
+	</div>
+	<div class="dirViewerHeading">{heading} \{folderName}</div>
+	<div
+		class="dirViewerBody"
+		<f:if condition="{open} == ''">style="display:none"</f:if>
+		id="dirViewerBody{folderName}">
+		<f:render partial="DirViewer/Index" arguments="{extFolderTreeArray: extFolderTreeArray}" />
+	</div>
+</div>

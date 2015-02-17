@@ -1,0 +1,66 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="header">
+</f:section>
+<f:section name="iconButtons">
+</f:section>
+<f:section name="breadcrumbs">
+	<f:render partial="PortingProcess/Breadcrumbs" arguments="{activ: '1'}" />
+</f:section>
+<f:section name="content">
+<h1>Porting of Extension &quot;{portingProcess.oldExtension.title}&quot;</h1>
+<h2>Possible localization files</h2>
+<div class="extPorterHeaderInstruction">
+<f:if condition="{possibleLLFiles -> f:count()} != 0">
+    <f:then>
+        The following <f:count subject="{possibleLLFiles}" /> Localization file(s) were found in the old Extension. Please choose the ones you want to be processed.
+        <ul>
+            <li>locallang_db.xml files are kept but for each domain object found in the next step a seperate  &quot;locallang_csh_tx_extensionporter_domain_model_<i>tablename</i>.xlf&quot; file will be created. </li>
+            <li>All locallang.xml from found plugins are combined</li>
+            <li>A seperate file for the plugin itself will be created</li>
+        </ul>
+        <div class="extPorterHintDiv">This extensionporter actually needs a way, to parse the old XML-Files and convert them into XLF files. This part is not yet implemented.</div>
+    </f:then>
+    <f:else>
+        There were no localization files found, please continue with database.
+    </f:else>
+</f:if>
+</div>
+<f:form action="updateLocalization" name="portingProcess" object="{portingProcess}" >
+<div id="extPorterBodyWrapper">
+
+    <div id="extPorterBody">
+
+        <f:for each="{possibleLLFiles}" as="pathOfpossibleLLFile" key="possibleLLFile" iteration="possibleLLFilesIteration">
+        	<div class="extPorterFileDisplayWrapper">
+        		<div class="extPorterFileDisplayHeading"><vh:icon text="{possibleLLFile}" /></div>
+        		<div class="extPorterFileDisplayBody"><f:format.crop maxCharacters="14" append="&nbsp;[...]">{possibleLLFile}</f:format.crop></div>
+        		<div class="extPorterFileDisplayFooter">
+        		<f:form.checkbox name="chosenLLFiles[{possibleLLFile}]" value="{pathOfpossibleLLFile}" checked="1" />
+        		<br/>
+        		Process file
+        		</div>
+        	</div>
+        </f:for>
+        <div style="clear:both"></div>
+
+    </div>
+    <div class="extPorterSubmitWrapper">
+        <f:form.submit class="extPorterSubmit" name="startPorting" value="Continue" />
+    </div>
+
+</div>
+</f:form>
+<div class="contentAndInfoSeperator" />Info</div>
+<div id="extPorterInfoSection">
+<h2>Dir Viewer</h2>
+	<f:render partial="DirViewer/Wrapper" arguments="{heading: 'New Extension folder', folderName: portingProcess.newExtension.extFolder, extFolderTreeArray: newExtFolderTreeArray}" />
+
+	<f:render partial="DirViewer/Wrapper" arguments="{heading: 'Old Extension folder', folderName: portingProcess.oldExtension.extFolder, extFolderTreeArray: oldExtFolderTreeArray}" />
+</div>
+<f:render partial="Progresslog/Index" arguments="{progresslogs: portingProcess.progresslogs}" />
+<div id="extPorterBack">
+	<f:link.action action="index" ><f:Be.buttons.icon icon="actions-view-go-back" title="Back"></f:Be.buttons.icon>Back to Index</f:link.action>
+</div>
+</f:section>

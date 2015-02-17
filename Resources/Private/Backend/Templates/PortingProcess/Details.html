@@ -1,0 +1,44 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="header">
+</f:section>
+<f:section name="iconButtons">
+</f:section>
+<f:section name="breadcrumbs">
+</f:section>
+<f:section name="content">
+<h1>Porting Process &quot;{portingProcess.oldExtension.title}&quot; - Details</h1>
+<table class="extPorterSelectTable">
+    <tr>
+        <th>New Extension title</th>
+        <th>Working in folder</th>
+        <th>Started</th>
+        <th>Last Modifed</th>
+        <th>Porting progress</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <td><f:if condition="{portingProcess.newExtension.title}"><f:then><b>{portingProcess.newExtension.title}</b></f:then><f:else>-Not yet set-</f:else></f:if></td>
+        <td><f:if condition="{portingProcess.newExtension.extFolder}"><f:then>/{portingProcess.newExtension.extFolder}</f:then><f:else>-Not yet created-</f:else></f:if></td>
+        <td><f:format.date format="d.m.Y - H:i:s">{portingProcess.crdate}</f:format.date></td>
+        <td><f:format.date format="d.m.Y - H:i:s">{portingProcess.tstamp}</f:format.date></td>
+        <td><vh:percentage percent="{portingProcess.percent}"/></td>
+        <td>
+            <f:link.action action="delete" arguments="{portingProcess: portingProcess}" onclick="return (confirm('Delete Porting process from {portingProcess.oldExtension.title}? All created Files will be deleted.'))"><f:Be.buttons.icon icon="actions-edit-delete" title="Delete"></f:Be.buttons.icon></f:link.action>
+            <f:link.action action="continue" arguments="{portingProcess: portingProcess}" onclick="return (confirm('Continue porting of extension {portingProcess.oldExtension.title}?'))"><f:Be.buttons.icon icon="actions-view-go-forward" title="Continue porting"></f:Be.buttons.icon></f:link.action>
+        </td>
+    </tr>
+</table>
+<h2>Dir Viewer</h2>
+<f:if condition="{newExtFolderTreeArray}">
+    <f:render partial="DirViewer/Wrapper" arguments="{heading: 'New Extension folder', folderName: portingProcess.newExtension.extFolder, extFolderTreeArray: newExtFolderTreeArray}" />
+</f:if>
+<f:if condition="{oldExtFolderTreeArray}">
+    <f:render partial="DirViewer/Wrapper" arguments="{heading: 'Old Extension folder', folderName: portingProcess.oldExtension.extFolder, extFolderTreeArray: oldExtFolderTreeArray}" />
+</f:if>
+<f:render partial="Progresslog/Index" arguments="{progresslogs: portingProcess.progresslogs}" />
+<div id="extPorterBack">
+	<f:link.action action="index" ><f:Be.buttons.icon icon="actions-view-go-back" title="Back"></f:Be.buttons.icon>Back to Index</f:link.action>
+</div>
+</f:section>

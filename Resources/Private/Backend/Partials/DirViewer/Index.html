@@ -1,0 +1,14 @@
+{namespace vh=Simon\ExtensionPorter\ViewHelpers}
+<f:for each="{extFolderTreeArray}" as="contentOfextFolderTreeArray" key="keyOfextFolderTreeArray" iteration="extFolderTreeArrayIteration">
+<div style="padding-left: <vh:math numberA='10' numberB='{level}' action='*'/>px">
+	<f:if condition='<vh:IsArray input="{contentOfextFolderTreeArray}"/>'>
+	    <f:then>
+		    <f:Be.buttons.icon icon="apps-filetree-folder-opened"/> {keyOfextFolderTreeArray}
+			<f:render partial="DirViewer/Index" arguments="{extFolderTreeArray: contentOfextFolderTreeArray, level:1}" />
+	    </f:then>
+	    <f:else>
+		    <f:Be.buttons.icon icon="mimetypes-text-text"/> {contentOfextFolderTreeArray}
+	    </f:else>
+	</f:if>
+</div>
+</f:for>
